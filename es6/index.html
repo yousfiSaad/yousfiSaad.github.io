@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>ES6 Harmony</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<link rel="stylesheet" href="css/css.css">
+
+	<script src="lib/js/alertify.min.js"></script>
+	<script src="lib/js/babel-browser.js"></script>
+	<link rel="stylesheet" href="lib/css/alertify.core.css" />
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<section>
+				<h1>EcmaScript 6</h1>
+				<h3>ES6 Harmony - la réincarnation de javascript</h3>
+				<p>
+					<img style="border:1px solid #e7ad52" data-src="http://www.gravatar.com/avatar/a06810e049c7bb791b6f72e68609d121?s=100" alt="Saad_Y" />
+					<small style="margin-top:14px">By <a href="https://github.com/yousfiSaad">Saad YOUSFI</a></small>
+				</p>
+			</section>
+			<!-- https://books.google.co.ma/books?id=qggT5iq8kbUC&pg=PA264&lpg=PA264&dq=netscape+microsoft+javascript+jscript+ecmascript&source=bl&ots=9gCbLh4rAb&sig=TdOJqqGI4wFxks5IBOm4GM7L8wk&hl=fr&sa=X&redir_esc=y#v=onepage&q=netscape%20microsoft%20javascript%20jscript%20ecmascript&f=false -->
+			<section>
+				<h2>JavaScript / EcmaScript</h1>
+					<ul>
+						<li class="fragment fade-in">
+							<h4>Netscape develope Javascript</h4>
+						</li>
+						<!-- could be used to control java applets -->
+						<li class="fragment fade-in">
+							<h4>Microsoft cree ça version de javascript (JScript)</h4>
+						</li>
+						<!-- avec des diference de JavaScript -->
+						<!-- nomenclature differente -->
+						<li class="fragment fade-in">
+							<h5>Partielement compatible avec JavaScript</h5>
+						</li>
+						<!-- se qui cause des maux de tete -->
+						<li class="fragment fade-in">
+							<h4>Decembre 1999: ECMA (European Computer Manufacturers Association) cree le standard EcmaScript</h4>
+						</li>
+						<li class="fragment fade-in">
+							<h5>IE Firefox Safari et opera support entierement le standard EcmaScript 5</h5>
+						</li>
+						<li class="fragment fade-in">
+							<h5>Nodejs 4.0 support ES6</h5>
+						</li>
+					</ul>
+			</section>
+
+			<section>
+				<h2>ES6 sur les environement ES5 (Transpiling)</h1>
+					<div class="babel-traceur">
+						<img class="fragment fade-in" src="img/traceur.svg" alt="traceur.svg" />
+						<img class="fragment fade-in" src="img/babel.jpg" alt="babel.jpg" style="top: -59px; position: relative;" />
+					</div>
+
+					<!-- http://ilikekillnerds.com/2015/01/transpiling-wars-6to5-vs-traceur/ -->
+					<!-- les meme performances -->
+					<!-- babel genere un code plus lisible -->
+					<!-- babel support jsx -->
+			</section>
+		</section>
+
+			<section>
+				<ol>
+					<h2><li class="fragment fade-in">Destructuration</li></h2>
+					<h2><li class="fragment fade-in">Classes</li></h2>
+					<h2><li class="fragment fade-in">Arrow Functions</li></h2>
+					<h2><li class="fragment fade-in">Modules</li></h2>
+					<h2><li class="fragment fade-in">Block Scoping</li></h2>
+					<h2><li class="fragment fade-in">Promises</li></h2>
+				</ol>
+			</section>
+			<section>
+				<section>
+					<h2>
+						Destructuration
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+var a = 'a', b = 'b';
+
+// inverser
+
+console.log([a, b]);
+						</code>
+					</pre>
+					<pre class="fragment fade-in">
+						<code class="JavaScript" ata-trim contenteditable>
+var a = 'a', b = 'b';
+var o = {
+	a: a,
+	b, b
+};
+console.log(o);
+						</code>
+					</pre>
+					<pre class="fragment fade-in">
+						<code class="JavaScript" ata-trim contenteditable>
+function getArray(){
+	return [0,1,2,3,4,5,6,7,8,9];
+};
+var [a,b,c] = getArray();
+console.log([a,b,c]);
+//console.log(rest);
+						</code>
+					</pre>
+				</section>
+
+					<section>
+						<h2>
+							Autre utilité
+						</h2>
+						<pre>
+							<code class="JavaScript" ata-trim contenteditable>
+function maFonction(a, b, callback){
+	return callback (a+b);
+};
+maFonction(1, 2, function(v){
+	console.log(v);
+});
+							</code>
+						</pre>
+						<pre class="fragment fade-in">
+							<code class="JavaScript" data-trim contenteditable>
+function maFonction({a, b, callback:c}){
+	return c (a+b);
+};
+maFonction({1, 2, function(v){
+	console.log(v);
+}});
+							</code>
+						</pre>
+						<pre class="fragment fade-in">
+							<code class="JavaScript" ata-trim contenteditable>
+var a = 'a', b = 'b';
+var o = {
+	a: a,
+	b, b
+};
+console.log(o);
+							</code>
+						</pre>
+						<pre class="fragment fade-in">
+							<code class="JavaScript" ata-trim contenteditable>
+function getArray(){
+	return [0,1,2,3,4,5,6,7,8,9];
+};
+var [a,b,c rest] = getArray();
+console.log([a,b,c]);
+console.log(rest);
+							</code>
+						</pre>
+					</section>
+			</section>
+
+			<!-- class -->
+			<section>
+				<section>
+					<h2>
+						Classes
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+class A {
+	constructor() {
+		console.log('construction my object');
+	}
+	methode() {
+		console.log('calling method a.methode()');
+	}
+}
+var a = new A();
+a.methode();
+						</code>
+					</pre>
+				</section>
+				<!-- extends -->
+				<section>
+					<h2>
+						Heritage
+					</h2>
+
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+class Parent{
+	constructor(){
+		console.log('constructing parent');
+	}
+	methode(){
+		console.log('log from parent');
+	}
+}
+class Child extends Parent{
+	constructor(){
+		super();
+		console.log('constructing Child');
+	}
+	methode(){
+		console.log('method from Child');
+	}
+}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>
+						Methodes statiques
+					</h2>
+
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+class MaClass{
+	static hello(){
+		console.log("Hello Wakanda Team");
+	}
+}
+MaClass.hello();
+						</code>
+					</pre>
+				</section>
+			</section>
+			<!-- end class -->
+			<!-- arrow functions -->
+				<section>
+					<section>
+					<h2>
+						Arrow Functions
+					</h2>
+
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+
+var fun = (a)=>{
+	console.log(a);
+};
+
+fun('test');
+
+
+						</code>
+					</pre>
+
+					<pre class="fragment fade-in">
+						<code class="JavaScript" ata-trim contenteditable>
+
+
+var tab = [0,1,2,3];
+var tabInc = tab.map((n) => n+1);
+
+console.log(tabInc);
+
+						</code>
+					</pre>
+				</section>
+				<section>
+				<h2>
+					Diferences
+				</h2>
+				<pre>
+					<code class="JavaScript" ata-trim contenteditable>
+
+var o = {
+	att:'myattr'
+};
+o.f = function(){
+	console.log(this);
+};
+o.f();
+
+</code>
+				</pre>
+				<pre>
+					<code class="JavaScript" ata-trim contenteditable>
+var o = {
+	att:'myattr'
+};
+o.f = () => {
+	console.log(this);
+};
+o.f();
+
+			</code>
+			</pre>
+
+			</section>
+
+			<section>
+				<h2>
+					Autre avantage
+				</h2>
+
+				<pre>
+					<code class="JavaScript" ata-trim contenteditable>
+function asynchrounFunction(arg, callback){
+	callback(JSON.stringify(arg) + " asynchronous result");
+};
+class MyClass{
+	constructor(){
+		this.attr = 'My Attribute';
+	}
+	method(){
+		return new Promise(function(res){
+			asynchrounFunction(this, function(asynchRes){
+				res(asynchRes);
+			});
+		});
+	}
+}
+var o = new MyClass();
+o.method().then(function(myRes){
+	console.log(myRes);
+})
+
+					</code>
+				</pre>
+			</section>
+			</section>
+				<!-- end of arrow functions -->
+				<!-- Modules -->
+				<section>
+				<section>
+					<h4>
+						Declaration
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// module5/MyClass.js
+export Class MyClass{
+	constructor(arg){
+		this.attr = arg;
+	}
+};
+						</code>
+					</pre>
+					<h4>
+						Utilisation
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// main.js
+import {MyClass} from 'module5/MyClass';
+var ob = new MyClass('My attribute');
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h4>
+						Declaration
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// helpers.js
+Class C{};
+var myObject;
+export {C, myObject}
+						</code>
+					</pre>
+					<h4>
+						Utilisation
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// main.js
+import {C as MyClass, myObject} from 'module5/MyClass';
+var ob = new MyClass('My attribute');
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h4>
+						Declaration
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// helpers.js
+var myObject;
+export default myObject
+						</code>
+					</pre>
+					<h4>
+						Utilisation
+					</h4>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+// main.js
+import myObject from 'module5/MyClass';
+// travailler avec myObject
+						</code>
+					</pre>
+				</section>
+			</section>
+				<!-- end modules -->
+				<section>
+					<h2>
+						Block Scoping
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+var s = 'orginal string';
+if(true){
+ var s = "j'ai oublié que s est deja dans le scope";
+}
+console.log(s);
+						</code>
+					</pre>
+				</section>
+				<!-- end Nlock Scoping -->
+				<!-- Prmises -->
+				<section>
+				<section>
+					<h2>
+						Promises
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+let doubleNumberAfterSeconde = function(v){
+	return new Promise((resolve, reject)=>{
+		setInterval(()=>{
+			if(v <= 5){
+				resolve(2 * v);
+			}else{
+				reject("le nombre est tres grand pour etre calculé dans une seconde");
+			}
+		}, 1000);
+	});
+};
+
+doubleNumberAfterSeconde(5).then(
+	(result) => {
+		console.log("seccess : " + result);
+	},(error) => {
+		console.log("error : " + error);
+	}
+);
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>
+						Encapsulation des promesses
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+
+let doubleNumberAfterSeconde = function(v){	return new Promise((resolve, reject)=>{setInterval(()=>{if(v <= 5){resolve(2 * v);}else{reject("le nombre est tres grand pour etre calculé dans une seconde");}}, 1000);});};
+var doubleTwoPromise = doubleNumberAfterSeconde(2);
+var doubleTwoTwice = doubleTwoPromise.then( (v)=>{
+	 return doubleNumberAfterSeconde(v);
+ }
+);
+
+doubleTwoTwice.then(
+	(result) => {
+		console.log("seccess : " + result);
+	},(error) => {
+		console.log ("error : " + error);
+	}
+);
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>
+						Ppromesses multiples
+					</h2>
+					<pre>
+						<code class="JavaScript" ata-trim contenteditable>
+let doubleNumberAfterSeconde = function(v){	return new Promise((resolve, reject)=>{		setInterval(()=>{			if(v <= 5){				resolve(2 * v);			}else{				reject("le nombre est tres grand pour etre calculé dans une seconde");}		}, 1000);	});};
+
+var doubleTwoOnce = doubleNumberAfterSeconde(2);
+var doubleTwoTwice = doubleTwoOnce.then( (v)=>{
+	 return 2*v;
+ }
+);
+
+var attendreLeTout = Promise.all([2, doubleTwoOnce, doubleTwoTwice]);
+attendreLeTout.then((tabRes) => {
+	console.log(tabRes);
+});
+						</code>
+					</pre>
+				</section>
+			</section>
+			<!-- end promises -->
+			</section>
+			<!-- Example of nested vertical slides -->
+			<section>
+				<section data-background="img/snoooooooooop.gif">
+					<h2>Do not forget the bonus string templating </h2>
+					<a href="#" class="navigate-down">
+						<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+					</a>
+				</section>
+				<section>
+					<h2>Basement Level 1</h2>
+					<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+				</section>
+				<section>
+					<h2>Basement Level 2</h2>
+					<p>That's it, time to go back up.</p>
+					<br>
+					<a href="#/2">
+						<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+					</a>
+				</section>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="js/log.js"></script>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [{
+				src: 'lib/js/classList.js',
+				condition: function() {
+					return !document.body.classList;
+				}
+			}, {
+				src: 'plugin/markdown/marked.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/markdown/markdown.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/highlight/highlight.js',
+				async: true,
+				condition: function() {
+					return !!document.querySelector('pre code');
+				},
+				callback: function() {
+					hljs.initHighlightingOnLoad();
+				}
+			}, {
+				src: 'plugin/zoom-js/zoom.js',
+				async: true
+			}, {
+				src: 'plugin/notes/notes.js',
+				async: true
+			}]
+		});
+	</script>
+</body>
+
+</html>
